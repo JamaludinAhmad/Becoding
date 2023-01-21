@@ -14,7 +14,7 @@ public class ShowData {
     static ResultSet rs;
     static Statement state;
 
-    public void run() {
+    public static void run() {
         try {
             Class.forName(jdbc);
             conn = DriverManager.getConnection(url, user, password);

@@ -29,10 +29,12 @@ public class MainMenu {
         if(pilih == 1){
             //masuk menu utama
             System.out.println("masuk menu utama");
+            UserMenu.menu();
         }
         else if(pilih == 2){
             //daftar akun
             System.out.println("mendaftar akun");
+            DaftarAkun.jalankan();
         } else if(pilih == 3) {
             //keluar dari program
             System.out.println("keluar dari program");

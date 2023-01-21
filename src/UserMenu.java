@@ -28,6 +28,7 @@ public class UserMenu {
             if(pilih == 1){
                 //tampilkan daftar kursus
                 System.out.println("menampilkan daftar kursus");
+                ShowData.run();
                 
             }
             else if(pilih == 2){
