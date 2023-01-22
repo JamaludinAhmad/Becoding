@@ -3,7 +3,7 @@ import java.util.UUID;
 
 public class DaftarAkun {
     
-    public static void jalankan() {
+    public static void jalankan(){
         Scanner sc = new Scanner(System.in);
         System.out.println("         Daftar akun ");
         System.out.println("-----------------------------");
@@ -19,7 +19,7 @@ public class DaftarAkun {
         for (int i = 0; i < 13; i++) {
             newid += id.charAt(i);
         }
-        InsertData.masukan(newid, user, password);
+        
 
         sc.close();
     }
