@@ -5,7 +5,10 @@ public class DaftarAkun {
     
     public static void jalankan(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("         Daftar akun ");
+        
+        System.out.println();
+        System.out.println("-----------------------------");        
+        System.out.println("         Daftar akun         ");
         System.out.println("-----------------------------");
 
         System.out.print("masukan nama: ");
@@ -25,7 +28,6 @@ public class DaftarAkun {
             System.out.println("tolong diingat user anda untuk login" );
             System.out.println("user anda: " + newid);
         } catch (Exception e) {
-            //TODO: handle exception
             System.out.println("Error: " + e.getMessage());
             e.printStackTrace();
         }

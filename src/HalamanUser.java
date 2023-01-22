@@ -8,19 +8,23 @@ public class HalamanUser {
         currentuser = u;
     }
 
-    public static void tampilkan(){
-        System.out.println("useranda: " + currentuser);
+    public static void tampilkan() throws Exception{
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("         Be-Coding");
+        System.out.println();
+        System.out.println();
+        System.out.println( "masuk sebagai: " + CrudManagement.getNama(currentuser));
+        System.out.println("---------------------------");
+        System.out.println("         Be-Coding         ");
+        System.out.println("---------------------------");
         System.out.println("1. lihat daftar kursus");
         System.out.println("2. kursus dibeli");
         System.out.println("3. beli kursus");
         System.out.println("4. logout");
-
         System.out.println("---------------------------");
         System.out.print("pilih: ");
+
         int pilih = sc.nextInt();
 
         if(pilih == 1){

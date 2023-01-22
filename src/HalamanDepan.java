@@ -6,7 +6,6 @@ public class HalamanDepan {
         try {
             jalankan();
         } catch (Exception e) {
-            //TODO: handle exception
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -15,6 +14,7 @@ public class HalamanDepan {
     public static void jalankan() throws Exception {
         
         Scanner sc = new Scanner(System.in);
+        System.out.println("---------------------------");
         System.out.println("         Be-Coding");
         System.out.println("---------------------------");
         System.out.println("1. Login ");
@@ -26,19 +26,18 @@ public class HalamanDepan {
 
         if(pilih == 1){
             //masuk menu utama
-            System.out.println("masuk menu utama");
-            HalamanLogin.jalankan();            
+            HalamanLogin.jalankan();
+                        
         }
         else if(pilih == 2){
             //daftar akun
-            System.out.println("mendaftar akun");
             DaftarAkun.jalankan();
         } else if(pilih == 3) {
             //keluar dari program
             System.out.println("keluar dari program");
         }
 
-        
+        sc.close();
     }
 
 }
