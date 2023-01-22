@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 public class HalamanUser {
-    static  String currentuser = "1126444c-9143";
+
+    static String currentuser;;
 
     public static void setCurrentUser(String u){
         currentuser = u;
     }
 
     public static void tampilkan(){
-        //if(currentuser == "") return;
+        System.out.println("useranda: " + currentuser);
 
         Scanner sc = new Scanner(System.in);
 
@@ -26,35 +27,42 @@ public class HalamanUser {
             //tampilkan daftar kursus
             System.out.println("menampilkan daftar kursus");
             CrudManagement.tampilkanData();
+            HalamanUser.tampilkan();
         }
         else if(pilih == 2){
             //lihat daftar kursus
             try {
                 CrudManagement.tampilkanData(currentuser);
+                HalamanUser.tampilkan();
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
             }
         } 
         else if(pilih == 3) {
-            //beli kursus get id_kursus
+            
             CrudManagement.tampilkanData();
             System.out.println("-------------------------");
             System.out.print("Beli kursus nomor: ");
             int no = sc.nextInt();
-            System.out.println(no);
 
             try {
                 String id_kursus = CrudManagement.getIdKursus(no);
                 CrudManagement.beliKursus(currentuser, id_kursus);
                 System.out.println("-----");
+                HalamanUser.tampilkan();
                 
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("kursus yang anda beli telah dibeli sebelumnya");
             }
             
         }
         else if(pilih == 4){
-            //
+            // logout akun
+            try {
+                HalamanDepan.jalankan();
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
         }
 
         sc.close();

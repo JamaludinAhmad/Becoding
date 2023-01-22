@@ -4,7 +4,10 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
+
+import com.mysql.cj.jdbc.Driver;
 
 
 public class CrudManagement {
@@ -80,7 +83,7 @@ public class CrudManagement {
             while(rs.next()){
                 System.out.println(++no + ". " +  rs.getString(1));
             }
-            //TODO: tampilkan kursus yang telah dibeli
+            
     }
 
     public static void beliKursus(String id_akun, String id_kursus) throws Exception{
@@ -103,6 +106,44 @@ public class CrudManagement {
             System.out.println("pembelian gagal dilakukan");
         }
         
+    }
+
+    public static void insertAkun(String id_akun, String nama_user, String pass) throws Exception{
+        Class.forName(jdbc);
+        conn = DriverManager.getConnection(url, user, password);
+
+        String query = "INSERT INTO tbl_akun VALUES (?,?,?,0)";
+        
+        ps = conn.prepareStatement(query);
+
+        ps.setString(1, id_akun);
+        ps.setString(2, nama_user);
+        ps.setString(3, pass);
+
+        if(ps.executeUpdate() > 0){
+            System.out.println(" akun telah berhasil didaftarkan");
+        } else {
+            System.out.println("akun telah berhasil didaftarkan");
+        }
+    }
+
+    public static String getPassword(String id_akun) throws Exception {
+        
+        Class.forName(jdbc);
+        conn = DriverManager.getConnection(url, user, password);
+        
+        String query = "SELECT pass FROM tbl_akun WHERE id_akun = (?)";
+        ps = conn.prepareStatement(query);
+        ps.setString(1, id_akun);
+        rs = ps.executeQuery();
+
+        if(!rs.next()){
+            return null;
+        }
+        else{
+            return rs.getString(1).toString();
+        }
+
     }
     
 }
