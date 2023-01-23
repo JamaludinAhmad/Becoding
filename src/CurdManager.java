@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class CrudManagement {
+public class CurdManager {
     static final String jdbc = "com.mysql.cj.jdbc.Driver";
     static String url = "jdbc:mysql://localhost/becoding";
     static String  user = "root";
@@ -68,23 +68,6 @@ public class CrudManagement {
         }
     }
 
-    public static void tampilkanData(String id_akun) throws Exception{
-            Class.forName(jdbc);
-            conn = DriverManager.getConnection(url, user, password);
-            
-            String query = "SELECT tbl_kursus.nama_kursus FROM tbl_kursus INNER JOIN tbl_akses ON tbl_akses.id_kursus = tbl_kursus.id_kursus WHERE tbl_akses.id_akun = " + "'"+ id_akun + "'";
-            
-            state = conn.createStatement();
-            rs = state.executeQuery(query);
-            
-            System.out.println("kursus yang telah dibeli");
-            int no = 0;
-            while(rs.next()){
-                System.out.println(++no + ". " +  rs.getString(1));
-            }
-            
-    }
-
     public static void beliKursus(String id_akun, String id_kursus) throws Exception{
         Class.forName(jdbc);
         conn = DriverManager.getConnection(url, user, password);
@@ -126,42 +109,6 @@ public class CrudManagement {
         }
     }
 
-    public static String getPassword(String id_akun) throws Exception {
-        
-        Class.forName(jdbc);
-        conn = DriverManager.getConnection(url, user, password);
-        
-        String query = "SELECT pass FROM tbl_akun WHERE id_akun = (?)";
-        ps = conn.prepareStatement(query);
-        ps.setString(1, id_akun);
-        rs = ps.executeQuery();
-
-        if(!rs.next()){
-            return null;
-        }
-        else{
-            return rs.getString(1).toString();
-        }
-
-    }
-
-    public static String getNama(String id_akun) throws Exception {
-        
-        Class.forName(jdbc);
-        conn = DriverManager.getConnection(url, user, password);
-        
-        String query = "SELECT nama FROM tbl_akun WHERE id_akun = (?)";
-        ps = conn.prepareStatement(query);
-        ps.setString(1, id_akun);
-        rs = ps.executeQuery();
-
-        if(!rs.next()){
-            return null;
-        }
-        else{
-            return rs.getString(1).toString();
-        }
-
-    }
+    
     
 }

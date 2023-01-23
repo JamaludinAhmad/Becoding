@@ -18,13 +18,14 @@ public class HalamanLogin {
 
         //cek password
         try {
-            if(pass.equals(CrudManagement.getPassword(user))){
+            if(pass.equals(Akun.getPassword(user))){
                 HalamanUser.setCurrentUser(user);
                 HalamanUser.tampilkan();
             }
             else{
                 System.out.println("password tidak match");
             }
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
