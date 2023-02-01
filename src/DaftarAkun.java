@@ -1,9 +1,8 @@
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class DaftarAkun {
-    
-    public static void jalankan(){
+    public static void jalankan() throws Exception{
         Scanner sc = new Scanner(System.in);
         
         System.out.println();
@@ -18,18 +17,18 @@ public class DaftarAkun {
         System.out.print("masukan password: ");
         String password = sc.nextLine();
 
-        //insert data
-        // String id = UUID.randomUUID().toString();
-        // String newid = "";
-        // for (int i = 0; i < 13; i++) {
-        //     newid += id.charAt(i);
-        // }
 
         try {
-            CurdManager.insertAkun(user, nama, password);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+            CrudManager.insertAkun(user, nama, password);
+        }
+        catch(SQLIntegrityConstraintViolationException e){
+            System.out.println("user telah terpakai");
+        }
+        catch (Exception e) {
+            System.out.println("Error" + e.getMessage());
+        }
+        finally{
+            HalamanDepan.jalankan();
         }
 
         

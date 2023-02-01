@@ -1,17 +1,23 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class HalamanDepan {
     
     public static void main(String[] args) {
         try {
             jalankan();
-        } catch (Exception e) {
+        }
+        catch(InputMismatchException e){
+            System.out.println("input salah");
+        }
+        catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+
         }
     }
 
     //halaman depan 
-    public static void jalankan() throws Exception {
+    public static void jalankan() throws InputMismatchException, Exception {
         
         Scanner sc = new Scanner(System.in);
         System.out.println("---------------------------");
@@ -39,5 +45,5 @@ public class HalamanDepan {
 
         sc.close();
     }
-
+    
 }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class HalamanLogin {
     
-    public static void jalankan(){
+    public static void jalankan() throws Exception{
         Scanner sc = new Scanner(System.in);
 
         System.out.println();
@@ -16,20 +16,14 @@ public class HalamanLogin {
         String pass = sc.nextLine();
         System.out.println("----------------------------");
 
-        //cek password
-        try {
-            if(pass.equals(Akun.getPassword(user))){
-                HalamanUser.setCurrentUser(user);
-                HalamanUser.tampilkan();
-            }
-            else{
-                System.out.println("password tidak match");
-            }
-            
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        if(CrudManager.checkPassword(user, pass)){
+            HalamanUser.inisialisasiAkun(user);
+            HalamanUser.tampilkan();
         }
 
+        else{
+            System.out.println("password tidak match");
+        }
         sc.close();
     }
 }
